@@ -43,8 +43,8 @@
         
         /* 
         ╔════════════════════════════════════════════════════════════════════════╗
-        ║ Construye la consulta SQL para insertar el nuevo usuario en la base de  ║
-        ║ datos                                                                    ║
+        ║ Construye la consulta SQL para insertar el nuevo usuario en la base de ║
+        ║ datos                                                                  ║
         ╚════════════════════════════════════════════════════════════════════════╝
         */
         $consulta = "INSERT INTO alumnos (nombre, apellido, curso) VALUES ('$nombre', '$apellido', '$curso')"; 
@@ -59,14 +59,14 @@
           header("location:index.php"); 
           /* 
           ╔════════════════════════════════════════════════════════════════════════╗
-          ║ Redirige a la página de inicio si la inserción fue exitosa            ║
+          ║ Redirige a la página de inicio si la inserción fue exitosa             ║
           ╚════════════════════════════════════════════════════════════════════════╝
           */
         } else {
           echo "Error al insertar el registro: " . $con->error; 
           /* 
           ╔════════════════════════════════════════════════════════════════════════╗
-          ║ Muestra un mensaje de error si la inserción falla                     ║
+          ║ Muestra un mensaje de error si la inserción falla                      ║
           ╚════════════════════════════════════════════════════════════════════════╝
           */
         }
