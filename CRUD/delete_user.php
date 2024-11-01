@@ -9,12 +9,26 @@
 <body>
 
 <?php require('connection.php'); ?>
+<!-- 
+╔════════════════════════════════════════════════════════════════════════╗
+║ Conexión a la base de datos                                           ║
+╚════════════════════════════════════════════════════════════════════════╝
+-->
+
+<div class="main-container">
 
   <form method="post" action="">
-    <strong>Nombre: </strong>
-    <input type="text" name="nombre" size="20" required>
+    <strong>ID: </strong>
+    <input type="text" name="id" size="20" required>
     <br>
-    <input type="submit" class="btn-submit" name="enviar" value="Buscar">
+    <input type="submit" class="btn-submit" name="enviar" value="Eliminar">
+    <!-- 
+    ╔════════════════════════════════════════════════════════════════════════╗
+    ║ Botón para enviar el ID del usuario a eliminar                        ║
+    ╚════════════════════════════════════════════════════════════════════════╝
+    --> 
+
+
   </form>
   <br>
 
@@ -22,20 +36,27 @@
 </body>
 </html>
 
+</div>
+
 <?php
 require('connection.php');
+/* 
+╔════════════════════════════════════════════════════════════════════════╗
+║ Requiere de nuevo la conexión a la base de datos para procesar la      ║
+║ eliminación del usuario                                                ║
+╚════════════════════════════════════════════════════════════════════════╝
+*/
 
 if (isset($_POST['id'])) {
-  $id = $con->real_escape_string($_POST['id']);
-  $query = "DELETE FROM alumnos WHERE id = '$id'";
+  $id = $con->real_escape_string($_POST['id']); 
+  $query = "DELETE FROM alumnos WHERE id = '$id'"; // Consulta para eliminar el usuario
 
   if ($con->query($query) === TRUE) {
-    echo "User deleted successfully.";
+    echo "User deleted successfully."; 
+    header("Location: index.php"); 
+    exit();
   } else {
-    echo "Error deleting user: " . $con->error;
+    echo "Error deleting user: " . $con->error; 
   }
 }
-
-header("Location: index.php");
-exit();
-?>
+?> 
